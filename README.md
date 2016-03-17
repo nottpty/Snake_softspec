@@ -23,3 +23,8 @@ This README will show about compound of project, creator and controller.
 ### Controller ###
 
 * GameActivity connect with BoardView and Game because Game will process logical of program and BoardView create UI of program. GameActivity just control UI from BoardView and use logic from Game, then compile it together.
+
+### Optional ###
+
+* Green cell - If you stop in this cell, you will go to last cell before end point.
+* Orange cell - If you stop in this cell, you will go to start point.
