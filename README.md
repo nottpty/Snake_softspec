@@ -1,6 +1,6 @@
 # README #
 
-This README will show about compound of project, creator and controller.
+This README will show about compound of project, creator, controller and optional.
 
 ### How many class in this project ###
 
