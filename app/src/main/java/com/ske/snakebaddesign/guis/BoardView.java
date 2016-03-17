@@ -15,11 +15,13 @@ public class BoardView extends View {
     private float cellSize;
     private float padding;
     private float playerSize;
-    private int colorP1 = Color.WHITE;
+    private int colorP1 = Color.MAGENTA;
     private int colorP2 = Color.BLACK;
-    private int colorBG = Color.parseColor("#6d8d46");
-    private int colorCell = Color.parseColor("#87aa4c");
-    private int colorText = Color.parseColor("#cfe8a6");
+    private int colorBG = Color.parseColor("#80DEEA");
+    private int colorCell = Color.parseColor("#FFEBEE");
+    private int colorText = Color.parseColor("#000000");
+    private int aTrap = Color.parseColor("#FBC02D");
+    private int aLucky = Color.parseColor("#76FF03");
 
     // These variables will be used to keep track of what to render
     private int boardSize;
@@ -91,6 +93,8 @@ public class BoardView extends View {
     }
 
     private void drawSquares(Canvas canvas) {
+        int trap = (int)(boardSize/2+boardSize/4);
+        int lucky = (int)(boardSize/2-boardSize/4);
 
         for(int i = 0; i < boardSize; i++) {
             for(int j = 0; j < boardSize; j++) {
@@ -98,11 +102,20 @@ public class BoardView extends View {
                 float startY = j * cellSize + padding/2;
                 float endX = startX + cellSize - padding;
                 float endY = startY + cellSize - padding;
-                paint.setColor(colorCell);
-                canvas.drawRect(startX, startY, endX, endY, paint);
-                paint.setColor(colorText);
-                String label = (j *  boardSize + i + 1) + "";
-                canvas.drawText(label, startX + cellSize/2 - padding/2, startY + cellSize/2, paint);
+
+                if(i == trap && j == trap){
+                    paint.setColor(aTrap);
+                }
+                else if(i == lucky && j == lucky){
+                    paint.setColor(aLucky);
+                }
+                else {
+                    paint.setColor(colorCell);
+                }
+                    canvas.drawRect(startX, startY, endX, endY, paint);
+                    paint.setColor(colorText);
+                    String label = (j * boardSize + i + 1) + "";
+                    canvas.drawText(label, startX + cellSize / 2 - padding / 2, startY + cellSize / 2, paint);
             }
         }
     }
